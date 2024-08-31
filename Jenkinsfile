@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        EMAIL_RECIPIENT = "alenjbenny24@gmail.com"
+        EMAIL_RECIPIENT = "your.email@example.com"
         DIRECTORY_PATH = "/path/to/your/code"
         TESTING_ENVIRONMENT = "Staging"
         PRODUCTION_ENVIRONMENT = "AlenJosephBenny"
@@ -88,7 +88,6 @@ pipeline {
             mail to: "${env.EMAIL_RECIPIENT}",
                 subject: "Pipeline Failure: ${currentBuild.fullDisplayName}",
                 body: "The pipeline has failed. Please check the logs for details.",
-            
         }
     }
 }
