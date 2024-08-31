@@ -4,7 +4,7 @@ pipeline {
     environment {
         EMAIL_RECIPIENT = "alenjbenny24deakin@gmail.com"
         DIRECTORY_PATH = "/path/to/your/code"
-        TESTING_ENVIRONMENT = "Test Staging"
+        TESTING_ENVIRONMENT = "Staging"
         PRODUCTION_ENVIRONMENT = "AlenJosephBenny"
     }
 
@@ -12,7 +12,7 @@ pipeline {
         stage('Build') {
             steps {
                 script {
-                    echo "Build the code using Maven."
+                    echo "Build the code using Maven." // Compile and package the code
                     // Example build command
                     // sh 'mvn clean install'
                 }
@@ -21,7 +21,7 @@ pipeline {
         stage('Unit and Integration Tests') {
             steps {
                 script {
-                    echo "Run unit tests using JUnit and integration tests using TestNG."
+                    echo "Run unit tests using JUnit and integration tests using TestNG." // Validate code functionality
                     // Example test command
                     // sh 'mvn test'
                 }
@@ -30,7 +30,7 @@ pipeline {
         stage('Code Analysis') {
             steps {
                 script {
-                    echo "Analyze the code using SonarQube."
+                    echo "Analyze the code using SonarQube." // Ensure code quality and standards
                     // Example SonarQube command
                     // sh 'mvn sonar:sonar'
                 }
@@ -39,7 +39,7 @@ pipeline {
         stage('Security Scan') {
             steps {
                 script {
-                    echo "Perform a security scan using OWASP Dependency-Check."
+                    echo "Perform a security scan using OWASP Dependency-Check." // Identify security vulnerabilities
                     // Example security scan command
                     // sh 'dependency-check.sh --project MyApp --scan /path/to/your/code'
                 }
@@ -48,7 +48,7 @@ pipeline {
         stage('Deploy to Staging') {
             steps {
                 script {
-                    echo "Deploy the application to a staging environment using AWS CLI."
+                    echo "Deploy the application to a staging environment using AWS CLI." // Push to staging for final validation
                     // Example deployment command
                     // sh 'aws deploy ...'
                 }
@@ -57,7 +57,7 @@ pipeline {
         stage('Integration Tests on Staging') {
             steps {
                 script {
-                    echo "Run integration tests on the staging environment using Selenium and Postman."
+                    echo "Run integration tests on the staging environment using Selenium and Postman." // Validate in a production-like environment
                     // Example integration test command
                     // sh 'selenium-server -port 4444 &'
                     // sh 'newman run postman_collection.json'
@@ -67,7 +67,7 @@ pipeline {
         stage('Deploy to Production') {
             steps {
                 script {
-                    echo "Deploy the application to the production environment using AWS CLI."
+                    echo "Deploy the application to the production environment using AWS CLI." // Release to production for live use
                     // Example production deployment command
                     // sh 'aws deploy ...'
                 }
@@ -77,7 +77,7 @@ pipeline {
 
     post {
         always {
-            echo "Pipeline execution completed."
+            echo "Pipeline execution completed." // Notify that pipeline has finished
             mail to: "${env.EMAIL_RECIPIENT}",
                 subject: "Pipeline Success: ${currentBuild.fullDisplayName}",
                 body: "The pipeline has completed successfully."
