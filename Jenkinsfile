@@ -88,7 +88,7 @@ pipeline {
             mail to: "${env.EMAIL_RECIPIENT}",
                 subject: "Pipeline Failure: ${currentBuild.fullDisplayName}",
                 body: "The pipeline has failed. Please check the logs for details.",
-                attachLog: true
+            
         }
     }
 }
