@@ -83,13 +83,14 @@ pipeline {
             mail to: "${env.EMAIL_RECIPIENT}",
                 subject: "Pipeline Success: ${currentBuild.fullDisplayName}",
                 body: "The pipeline has completed successfully."
-                attachLog: true
         }
         failure {
-            mail to: "${env.EMAIL_RECIPIENT}",
-                subject: "Pipeline Failure: ${currentBuild.fullDisplayName}",
-                body: "The pipeline has failed. Please check the logs for details.",
-                attachLog: true
+            script {
+                def log = currentBuild.rawBuild.getLog(100).join('\n')
+                mail to: "${env.EMAIL_RECIPIENT}",
+                    subject: "Pipeline Failure: ${currentBuild.fullDisplayName}",
+                    body: "The pipeline has failed. Please check the logs for details:\n\n${log}"
+            }
         }
     }
 }
