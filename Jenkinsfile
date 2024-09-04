@@ -81,7 +81,8 @@ pipeline {
         }
         success {
             script {
-                def log = currentBuild.rawBuild.getLog(100).join('\n')
+                // Use currentBuild to retrieve logs safely
+                def log = currentBuild.getLog(100).join('\n')
                 mail to: "${env.EMAIL_RECIPIENT}",
                     subject: "Pipeline Success: ${currentBuild.fullDisplayName}",
                     body: "The pipeline has completed successfully. Here are the last 100 lines of the log:\n\n${log}"
@@ -89,7 +90,8 @@ pipeline {
         }
         failure {
             script {
-                def log = currentBuild.rawBuild.getLog(100).join('\n')
+                // Use currentBuild to retrieve logs safely
+                def log = currentBuild.getLog(100).join('\n')
                 mail to: "${env.EMAIL_RECIPIENT}",
                     subject: "Pipeline Failure: ${currentBuild.fullDisplayName}",
                     body: "The pipeline has failed. Please check the logs for details:\n\n${log}"
