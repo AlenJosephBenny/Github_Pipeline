@@ -81,20 +81,28 @@ pipeline {
         }
         success {
             script {
-                // Use currentBuild to retrieve logs safely
-                def log = currentBuild.getLog(100).join('\n')
-                mail to: "${env.EMAIL_RECIPIENT}",
+                echo "Pipeline succeeded."
+                emailext (
+                    to: "${env.EMAIL_RECIPIENT}",
                     subject: "Pipeline Success: ${currentBuild.fullDisplayName}",
-                    body: "The pipeline has completed successfully. Here are the last 100 lines of the log:\n\n${log}"
+                    body: "The pipeline has completed successfully.\n\n" +
+                          "Build URL: ${env.BUILD_URL}\n\n" +
+                          "Summary: ${currentBuild.description}",
+                    attachLog: true
+                )
             }
         }
         failure {
             script {
-                // Use currentBuild to retrieve logs safely
-                def log = currentBuild.getLog(100).join('\n')
-                mail to: "${env.EMAIL_RECIPIENT}",
+                echo "Pipeline failed."
+                emailext (
+                    to: "${env.EMAIL_RECIPIENT}",
                     subject: "Pipeline Failure: ${currentBuild.fullDisplayName}",
-                    body: "The pipeline has failed. Please check the logs for details:\n\n${log}"
+                    body: "The pipeline has failed. Please check the logs for details.\n\n" +
+                          "Build URL: ${env.BUILD_URL}\n\n" +
+                          "Summary: ${currentBuild.description}",
+                    attachLog: true
+                )
             }
         }
     }
