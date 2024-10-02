@@ -20,7 +20,7 @@ pipeline{
                     
                     emailext (
                 subject: "Jenkins Build ${env.build_number} - Test Stage ${currentBuild.result}",
-                body: "This is to notify you that the Test stage of build ${env.build_number} has successfully completed with status: SUCCESS.",
+                body: " Test stage of build ${env.build_number} has successfully completed with status: SUCCESS.",
                 to: 'alenjbenny24deakin@gmail.com',
                 attachLog: true
                         )
@@ -39,7 +39,7 @@ pipeline{
             
                     emailext (
                 subject: "Jenkins Build ${env.build_number} - Security Scan Stage ${currentBuild.result}",
-                body: "This is to notify you that the Security Scan stage of build ${env.build_number} has completed with status: SUCCESS.",
+                body: " The Security Scan stage of build ${env.build_number} has completed with status: SUCCESS.",
                 to: 'alenjbenny24deakin@gmail.com',
                 attachLog: true
                         )
