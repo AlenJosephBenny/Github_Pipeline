@@ -21,7 +21,7 @@ pipeline{
                     emailext (
                 subject: "Jenkins Build ${env.build_number} - Test Stage ${currentBuild.result}",
                 body: "This is to notify you that the Test stage of build ${env.build_number} has successfully completed with status: SUCCESS.",
-                to: 's223161963@deakin.edu.au',
+                to: 'alenjbenny24deakin@gmail.com',
                 attachLog: true
                         )
                 }
@@ -40,7 +40,7 @@ pipeline{
                     emailext (
                 subject: "Jenkins Build ${env.build_number} - Security Scan Stage ${currentBuild.result}",
                 body: "This is to notify you that the Security Scan stage of build ${env.build_number} has completed with status: SUCCESS.",
-                to: 's223161963@deakin.edu.au',
+                to: 'alenjbenny24deakin@gmail.com',
                 attachLog: true
                         )
                 }
@@ -73,7 +73,7 @@ pipeline{
       subject: "SUCCESSFUL: Job '${env.job_name} [${env.build_number}]'",
       body: """<p>SUCCESSFUL: Job '${env.job_name} [${env.build_number}]':</p>
         <p>Check console output at &QUOT;<a href='${env.build_url}'>${env.job_name} [${env.build_number}]</a>&QUOT;</p>""",
-      to: "s223161963@deakin.edu.au"
+      to: "alenjbenny24deakin@gmail.com"
     )                     
                         
     }
