@@ -4,7 +4,7 @@ pipeline{
     environment{
         DIRECTORY_PATH = "/project_directory"
         test_env = "Test Env"
-        prod_env = "Prod Env"
+        prod_env = "Production Env"
     }
     stages{
         stage('Build'){
