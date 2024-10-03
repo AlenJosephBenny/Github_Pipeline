@@ -64,7 +64,10 @@ pipeline{
             }
         stage('Integration Tests on staging'){
                 steps{
-                     echo "Running integration tests on staging environment"
+                     echo "Run integration tests on the staging environment using Selenium and Postman."
+                    //Example integration test command
+                    //sh 'selenium-server -port 4444 &'
+                    //sh 'newman run postman_collection.json'
                 echo "Tests complete"
                 }
             }
