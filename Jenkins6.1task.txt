@@ -9,8 +9,10 @@ pipeline{
     stages{
         stage('Build'){
             steps{
-                echo "fetch the source code from the directory path specified by the environment variable"
+                echo "Build the code using Maven."
                 echo "compile the code and generate any necessary artifacts"
+                //Example build command
+                //sh 'mvn clean install'
             }
         }
             stage('Unit and Integration Test'){
