@@ -75,7 +75,9 @@ pipeline{
              
              steps{
                  echo "Deploying to production environment: ${prod_env}"
-                 echo "Deployed to production!"
+                 echo "Deploy the application to the production environment using AWS CLI." 
+                // Example production deployment command
+                // sh 'aws deploy ...'
              }
        
     }                
