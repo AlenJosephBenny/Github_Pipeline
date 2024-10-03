@@ -42,6 +42,8 @@ pipeline{
             stage('Security scan'){
                 steps{
                     echo "Security scan using OWASP Dependency-Check plugin for checking project dependencies for vulnerabilities"
+                    // Example security scan command
+                    //sh 'dependency-check.sh --project MyApp --scan /path/to/your/code'
             
                     emailext (
                 subject: "Jenkins Build ${env.build_number} - Security Scan Stage ${currentBuild.result}",
@@ -54,7 +56,9 @@ pipeline{
            
             stage('Deploy'){
                 steps{
-                     echo "deploy the application to a testing/staging environment in an AWS EC2 instance"
+                     echo "Deploy the application to a staging environment using AWS CLI."
+                    //Example deployment command
+                    //sh 'aws deploy ...'
                  echo "test environment: ${test_env}"
                 }
             }
